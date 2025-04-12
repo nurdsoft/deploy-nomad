@@ -11,8 +11,8 @@ inputs:
   job:
     description: 'Path to the job file'
     required: true
-  nomad_url:
-    description: 'URL of the nomad endpoint'
+  endpoint:
+    description: 'Endpoint to submit the job'
     required: true
 
 runs:
