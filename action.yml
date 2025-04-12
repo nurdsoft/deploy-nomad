@@ -1,4 +1,4 @@
-name: Nomad Deploy
+name: Deploy a Nomad Job
 description: Deploys a HCL nomad job
 
 inputs:
