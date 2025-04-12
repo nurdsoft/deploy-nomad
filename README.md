@@ -1,4 +1,4 @@
-# deployer-nomad-action
+# deploy-nomad
 
 This Github action allows you to submit an HCL nomad job to an endpoint.
 
@@ -19,7 +19,7 @@ jobs:
   deploy:
     steps:
       - name: "Deploy to Nomad"
-        uses: nurdsoft/deployer-nomad-action
+        uses: nurdsoft/deploy-nomad
         with:
           token: ${{ secrets.NOMAD_DEPLOY_TOKEN }}
           endpoint: https://nomad.domain.com
