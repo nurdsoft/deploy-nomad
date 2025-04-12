@@ -1,0 +1,25 @@
+name: Nomad Deploy
+description: Deploys a HCL nomad job
+
+inputs:
+  token:
+    description: 'Authentication token'
+    required: true
+  job:
+    description: 'Path to the job file'
+    required: true
+  nomad_url:
+    description: 'URL of the nomad endpoint'
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Submit Job
+      shell: bash
+      run: |
+        curl -X POST \
+          -H "Authorization: Bearer ${{ inputs.token }}" \
+          -H "Content-Type: application/hcl" \
+          -d "@$${{ inputs.job }}" \
+          "${{ inputs.deployment_url }}"
