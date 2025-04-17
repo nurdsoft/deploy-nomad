@@ -22,6 +22,6 @@ jobs:
         uses: nurdsoft/deploy-nomad
         with:
           token: ${{ secrets.NOMAD_DEPLOY_TOKEN }}
-          endpoint: https://nomad.domain.com
+          endpoint: https://nomad.domain.com/v1/jobs
           job: deploy.nomad
 ```
