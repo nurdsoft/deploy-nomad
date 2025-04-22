@@ -24,5 +24,5 @@ runs:
         curl -X POST \
           -H "Authorization: Bearer ${{ inputs.token }}" \
           -H "Content-Type: application/hcl" \
-          -d "@$${{ inputs.job }}" \
-          "${{ inputs.deployment_url }}"
+          -d "@${{ inputs.job }}" \
+          "${{ inputs.endpoint}}"
