@@ -22,7 +22,7 @@ runs:
       shell: bash
       run: |
         curl -X POST \
-          -H "Authorization: Bearer ${{ inputs.token }}" \
-          -H "Content-Type: application/hcl" \
-          -d "@${{ inputs.job }}" \
+          -H "X-API-Key: ${{ inputs.token }}" \
+          -H "Content-Type: text/plain" \
+          --data-binary "@${{ inputs.job }}" \
           "${{ inputs.endpoint}}"
