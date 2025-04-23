@@ -1,0 +1,36 @@
+name: Deploy a Job
+description: Submits a job file to a specified deployment endpoint
+branding:
+  icon: 'upload-cloud'
+  color: 'green'
+
+inputs:
+  token:
+    description: 'Authentication token for the endpoint'
+    required: true
+  job:
+    description: 'Path to the job file to submit'
+    required: true
+  endpoint:
+    description: 'Fully qualified URL to submit the job'
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Validate job file exists
+      shell: bash
+      run: |
+        if [ ! -f "${{ inputs.job }}" ]; then
+          echo "❌ Error: Job file '${{ inputs.job }}' does not exist."
+          exit 1
+        fi
+
+    - name: Submit Job
+      shell: bash
+      run: |
+        echo "📤 Submitting job file: ${{ inputs.job }}"
+        curl -v -X POST "${{ inputs.endpoint }}" \
+          -H "X-API-Key: ${{ inputs.token }}" \
+          -H "Content-Type: text/plain" \
+          --data-binary "@${{ inputs.job }}"

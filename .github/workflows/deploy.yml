@@ -1,0 +1,24 @@
+name: Deploy Job
+
+on:
+  workflow_dispatch:
+    inputs:
+      file:
+        description: 'Path to the job file'
+        required: false
+        default: 'nomad-jobs/hello-service.nomad'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy Job
+        uses: ./.github/actions/deploy-job
+        with:
+          token: ${{ secrets.TOKEN}}
+          endpoint: ${{ secrets.ENDPOINT }}
+          job: ${{ github.event.inputs.file }}
