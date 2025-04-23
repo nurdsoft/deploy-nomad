@@ -1,6 +1,6 @@
 # deploy-nomad
 
-This Github action allows you to submit an HCL nomad job to an endpoint.
+This Github action allows you to submit an HCL nomad job to an endpoint. It works in concert with https://github.com/nurdsoft/deployer-nomad-aws which provides the wiring from the internet to an internal nomad cluster.
 
 ## Usage
 
