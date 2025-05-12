@@ -14,12 +14,21 @@ inputs:
   endpoint:
     description: 'Endpoint to submit the job'
     required: true
+  environment:
+    description: 'Nomad environment variable value'
+    required: false
+  aws_account_id:
+    description: 'AWS Account ID'
+    required: false
 
 runs:
   using: "composite"
   steps:
     - name: Submit Job
       shell: bash
+      env:
+        NOMAD_VAR_environment: ${{ inputs.environment }}
+        NOMAD_VAR_aws_account_id: ${{ inputs.aws_account_id }}
       run: |
         curl -X POST \
           -H "X-API-Key: ${{ inputs.token }}" \
