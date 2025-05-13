@@ -9,6 +9,7 @@ This Github action allows you to submit an HCL nomad job to an endpoint. It work
 | token | Authentication token |
 | endpoint |  Endpoint where the HCL Nomad job will be submitted |
 | job | Path to the nomad job |
+| variables | Variables to pass to the job |
 
 All parameters are required.
 
