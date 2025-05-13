@@ -29,4 +29,4 @@ runs:
           -H "X-API-Key: ${{ inputs.token }}" \
           -H "Content-Type: text/plain" \
           --data-binary "@${{ inputs.job }}" \
-          "${{ inputs.endpoint }}?{{ inputs.variables }}"
+          "${{ inputs.endpoint }}?${{ inputs.variables }}"
