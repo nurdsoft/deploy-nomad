@@ -25,3 +25,16 @@ jobs:
           endpoint: https://nomad.domain.com/v1/jobs
           job: deploy.nomad
 ```
+
+```yaml
+jobs:
+  deploy:
+    steps:
+      - name: "Deploy to Nomad"
+        uses: nurdsoft/deploy-nomad
+        with:
+          token: ${{ secrets.NOMAD_DEPLOY_TOKEN }}
+          endpoint: https://nomad.domain.com/v1/jobs
+          job: deploy.nomad
+          variables: 'environment="dev"&count=1&force=false'
+```

@@ -14,6 +14,10 @@ inputs:
   endpoint:
     description: 'Endpoint to submit the job'
     required: true
+  variables:
+    description: 'Variables to pass to the job'
+    required: false
+    default: ''
 
 runs:
   using: "composite"
@@ -25,4 +29,4 @@ runs:
           -H "X-API-Key: ${{ inputs.token }}" \
           -H "Content-Type: text/plain" \
           --data-binary "@${{ inputs.job }}" \
-          "${{ inputs.endpoint}}"
+          "${{ inputs.endpoint }}?{{ inputs.variables }}"
